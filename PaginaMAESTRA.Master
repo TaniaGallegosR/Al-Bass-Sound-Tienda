@@ -1,0 +1,159 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMAESTRA.master.cs" Inherits="TaniaCinemasStore.PaginaMAESTRA" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Al Bass Sound</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+       
+
+    <link href="css/Productos_clientes.css" rel="stylesheet" />
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+  <style>
+      
+    
+     .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+       height:80px;
+      background-color:black;
+      
+
+      
+    }
+    
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    footer {
+      background-color: #ffffff;
+      padding: 30px;
+    }
+  </style>
+      <style>
+  .horizontal-inner > .item > img,
+  .horizontal-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+          .nav, .navbar-nav{
+               
+            margin-top:2%;
+            margin-left:10%;
+          }
+            
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus
+
+{
+        background-color: gray;
+}
+                   
+
+ 
+
+  </style>
+    
+</head>
+<body style="background-color:black;">
+    <form id="Form1" runat="server">
+
+
+<nav style="height:90px;" class="navbar navbar-inverse navbar-fixed-top ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button style="margin-bottom:7%;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="Defaul.aspx"><img src="Images/logo_small.png" height="65px"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="Defaul.aspx">Inicio</a></li>
+        <li><a href="Productos.aspx">Productos</a></li>
+          <asp:SqlDataSource runat="server" ID="CategorySqlDataSource1" ConnectionString='<%$ ConnectionStrings:TaniaConexion %>' SelectCommand="SELECT * FROM [Categorias]"></asp:SqlDataSource>
+           <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Categorias</li>
+                                    <li role="separator" class="divider"></li>
+                                    
+               <asp:Repeater ID="RptrCategory" runat="server" DataSourceID="CategorySqlDataSource1">
+                   
+                   <ItemTemplate> <li><a href="Categorias.aspx?id=<%#Eval("cat_id") %>"><%# Eval("cat_nombre") %> </a></li></ItemTemplate>
+               </asp:Repeater>
+          <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:TaniaConexion %>' SelectCommand="SELECT * FROM [Categorias]"></asp:SqlDataSource>
+               
+          
+
+                                    
+                                    
+                                </ul>
+                            </li>
+  
+      
+      
+        <li><a href="#">Contacto</a></li>
+           <li><a href="TusOrdenes.aspx">Tus Ordenes</a></li>
+           
+         
+
+      </ul>
+      <ul id="nav" class="nav navbar-nav navbar-right">
+        
+        <li><a href="Ver_Carrito.aspx"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
+          <li><asp:HyperLink runat="server" Font-Bold="true" Font-Size="12" ID="h2" Text="Registro"> </asp:HyperLink>
+              
+          </li>
+          <li><asp:HyperLink runat="server" Font-Bold="true" Font-Size="12" CssClass="glyphicon glyphicon-user" ID="h1"> </asp:HyperLink>
+              
+          </li>
+          <li><asp:Button Text="Salir" ID="logout" runat="server" CssClass="btn mybtn navbar-btn" onclick="logout_Click" /></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<br>
+
+<br>
+  
+        
+            <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1">
+
+             
+    </asp:ContentPlaceHolder>
+        
+        </form>
+    <br /><br />
+  
+ <div class="container"> </div><div>
+<footer style="background-color:black; color:white; text-align:center;">
+    
+
+    
+</footer>
+  </div>
+         <!-- jQuery ( que se necesita para los plugins de javascript bootrapps) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+          
+    </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js">
+      
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.magnify.js"></script>
+
+       
+</body>
+</html>
